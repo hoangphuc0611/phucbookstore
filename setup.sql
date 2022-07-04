@@ -1,6 +1,13 @@
-CREATE TABLE IF NOT EXISTS `books_reviews` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `book_name` varchar(50) NOT NULL,
-  `book_review` varchar(50) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Users` (
+  `id` varchar(100) NOT NULL,
+  `username` varchar(100) not null,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `registered` datetime ,
+  `last_login` datetime ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+
+
+

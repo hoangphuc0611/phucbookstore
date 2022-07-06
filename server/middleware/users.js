@@ -24,5 +24,20 @@ module.exports = {
         next();
 
     },
-    isLoggedIn: ()=>{},
+    isLoggedIn: (req, res, next)=>{
+        try{
+            const authenHeader = req.headers.authorization
+            const token = authenHeader.split(' ')[1]
+            const decoded = jwt.verify(token,"SECRETKEY")
+            req.userData = decoded
+            next();
+        }
+        catch(err){
+            throw err;
+            return res.status(400).send({
+                message: "your session is not valid"
+            })
+        }
+        
+    },
 }

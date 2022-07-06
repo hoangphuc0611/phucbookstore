@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const uuid = require("uuid")
 const db = require("../lib/db.js");
 const userMiddleWare = require("../middleware/users.js");
-const { validateRegister } = require("../middleware/users.js");
+const { validateRegister, isLoggedIn } = require("../middleware/users.js");
 
 
 //sign-up
@@ -96,8 +96,9 @@ router.post('/login', (req, res, next) => {
         })
 })
 //secret-router
-router.post('/secret-router', (req, res, next) => {
-
+router.post('/secret-router',isLoggedIn, (req, res, next) => {
+    console.log(req.userData)
+    res.send("THIS IS SECRETKEY")
 })
 
 
